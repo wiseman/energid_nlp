@@ -1,0 +1,86 @@
+<!-- Copyright 2012 Energid Technologies -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="en">
+      Frame Description Language schema.
+      John Wiseman (jjwiseman@yahoo.com)
+    </xsd:documentation>
+  </xsd:annotation>
+  
+  <xsd:element name="fdl">
+    <xsd:complexType>
+      <xsd:choice minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="frame" type="frameType"/>
+        <xsd:element name="lexicon" type="lexiconType"/>
+        <xsd:element name="include" type="includeType"/>
+      </xsd:choice>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:complexType name="lexiconType">
+    <xsd:sequence>
+      <xsd:element name="lexeme" minOccurs="0" maxOccurs="unbounded">
+	<xsd:complexType>
+	  <xsd:sequence>
+	    <xsd:element name="spelling" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+	    <xsd:element name="part-of-speech" type="partOfSpeechType" minOccurs="1" maxOccurs="1"/>
+	    <xsd:element name="phonemes" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+	  </xsd:sequence>
+	</xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="partOfSpeechType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="unknown"/>
+      <xsd:enumeration value="noun"/>
+      <xsd:enumeration value="verb"/>
+      <xsd:enumeration value="modifier"/>
+      <xsd:enumeration value="function"/>
+      <xsd:enumeration value="interjection"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="frameType">
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element name="parent" minOccurs="0" maxOccurs="1">
+	<xsd:complexType>
+	  <xsd:attribute name="id" type="xsd:string"/>
+	  <xsd:attribute name="instanceof" type="xsd:string"/>
+	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="constraint" minOccurs="0" maxOccurs="unbounded">
+	<xsd:complexType>
+	  <xsd:attribute name="slot" type="xsd:string"/>
+	  <xsd:attribute name="type" type="xsd:string"/>
+	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="phrase" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="generate" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="testphrase" type="testphraseType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="slot" minOccurs="0" maxOccurs="unbounded">
+	<xsd:complexType>
+	  <xsd:attribute name="name" type="xsd:string"/>
+	  <xsd:attribute name="value" type="xsd:string"/>
+	</xsd:complexType>
+      </xsd:element>
+    </xsd:choice>
+    <xsd:attribute name="id" type="xsd:string"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="includeType">
+    <xsd:attribute name="file" type="xsd:string"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="testphraseType">
+    <xsd:simpleContent>
+       <xsd:extension base="xsd:string">
+         <xsd:attribute name="match-type" type="xsd:string"/>
+       </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+      
+
+</xsd:schema>

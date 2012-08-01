@@ -1,0 +1,46 @@
+<!-- -*- Mode: XML; -*- -->
+<fdl>
+
+<frame id="c-action-request">
+  <parent id="c-utterance" />
+  <constraint slot="addressee" type="c-name" />
+  <constraint slot="action" type="c-action" />
+  <constraint slot="object" type="c-thing" />
+  <phrase>{addressee} ?:[let's|let us|why don't we] {action} ?:[with|on] ?:the {object}</phrase>
+  
+  <testphrase>hog let us restart the talk on</testphrase>
+  <testphrase>hog, let's start over with the talkon</testphrase>
+</frame>
+
+<frame id="c-hog">
+  <parent id="c-name" />
+  <phrase>hog</phrase>
+</frame>
+
+<frame id="c-restart">
+  <parent id="c-action" />
+  <phrase>[restart|start over]</phrase>
+</frame>
+
+<frame id="c-talkon">
+  <parent id="c-thing" />
+  <phrase>[talk on|talkon]</phrase>
+</frame>
+
+<!-- just make sure that constraints are inheritable -->
+<frame id="c-please-action-request">
+  <parent id="c-action-request" />
+  <phrase>please {addressee} {action} {object}</phrase>
+  <testphrase>please, hog, restart talk on</testphrase>
+</frame>
+
+<lexicon>
+  <lexeme>
+    <!-- Short for "roger". -->
+    <spelling>rog</spelling>
+    <part-of-speech>interjection</part-of-speech>
+    <phonemes>r ao jh</phonemes>
+  </lexeme>
+</lexicon>
+
+</fdl>
