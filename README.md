@@ -118,3 +118,5 @@ See `energid_nlp/fdl.xsd` for the full XML schema.
 
 This software is Copyright 2012, Energid Technologies, and is licensed
 under the BSD license (see the accompanying LICENSE.md).
+
+Written by John Wiseman and Michael Hannemann.

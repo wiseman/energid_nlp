@@ -1,5 +1,8 @@
 # Copyright Energid Technologies 2012
 
+# Based on code from Artificial Intelligence: A Modern Approach
+# http://aima.cs.berkeley.edu/
+
 """Implements propositional databases and logical expressions."""
 
 import re
